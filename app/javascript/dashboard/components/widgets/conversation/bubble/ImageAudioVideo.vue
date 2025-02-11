@@ -96,6 +96,7 @@ export default {
     },
     onImgError(e) {
         if (this.retryCount < this.maxRetries) {
+            console.warn(`Delay attemp: ${this.maxRetries}.`);
             setTimeout(() => {
                 e.target.src = this.attachment.data_url;
                 this.retryCount++;
@@ -107,6 +108,7 @@ export default {
         }
     },
     onImgErrorDelay() {
+      console.warn(`Failed to load image... delaying`);
       setTimeout(() => {
         this.isImageErrorDelay = true;
         this.$emit('error');
